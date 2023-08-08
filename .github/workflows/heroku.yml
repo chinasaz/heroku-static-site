@@ -3,7 +3,7 @@ name: CICD Static Deployment
 on:
   push:
     branches:
-      - main
+      - master
 jobs:
   deploy:   
     runs-on: ubuntu-latest
@@ -13,8 +13,8 @@ jobs:
         with:
           host: ${{ secrets.SSH_HOSTS }}
           username: ${{ secrets.SSH_USERNAME }}
-          key: ${{ secrets.SSH_PRIVATE_KEYS }}
+          key: ${{ secrets.SSH_KEYS }}
           script: |
             cd /home/ubuntu/heroku-static-site
-            sudo git pull origin main
+            sudo git pull origin master
             echo "Done"
